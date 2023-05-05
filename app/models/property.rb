@@ -4,8 +4,6 @@ class Property < ApplicationRecord
   has_many :images
   has_one :address
   has_one :reservation_criteria
-
-
   validates :name, presence: true, length: { maximum: 255 }
   validates :description, presence: true, length: { maximum: 1000 }
   validates :no_bedrooms, presence: true, numericality: { greater_than_or_equal_to: 1 }
