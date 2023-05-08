@@ -5,8 +5,8 @@ class Api::V1::ReservationCriteriasController < ApplicationController
   end
 
   def show
-    @reservation_criteria = ReservationCriteria.find(params[:id])
-    render json: @reservation_criteria
+    @categories = Category.includes(:properties).find(params[:id])
+    render json: @categories, include: %i[properties]
   end
 
   def create
