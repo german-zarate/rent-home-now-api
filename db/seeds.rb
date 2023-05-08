@@ -26,9 +26,9 @@ john = User.create(name: "John Doe", email: "john@example.com", password: "passw
 jane = User.create(name: "Jane Doe", email: "jane@example.com", password: "password", role: "admin", avatar: "https://randomuser.me/api/portraits/women/1.jpg")
 
 # Create some properties
-cozy_apartment = Property.create(name: "Cozy Apartment", description: "A cozy apartment in the heart of the city", no_bedrooms: 1, no_baths: 1, no_beds: 2, area: 50.0, user: john, category: apartment)
-luxury_villa = Property.create(name: "Luxury Villa", description: "A luxurious villa with a pool and ocean views", no_bedrooms: 3, no_baths: 3, no_beds: 6, area: 200.0, user: jane, category: villa)
-spacious_house = Property.create(name: "Spacious House", description: "A spacious house with a large backyard", no_bedrooms: 4, no_baths: 2, no_beds: 5, area: 150.0, user: john, category: house)
+cozy_apartment = Property.create(name: "Cozy Apartment", description: "A cozy apartment in the heart of the city", no_bedrooms: 1, no_baths: 1, no_beds: 2, area: 50.0, user: john, category: 2)
+luxury_villa = Property.create(name: "Luxury Villa", description: "A luxurious villa with a pool and ocean views", no_bedrooms: 3, no_baths: 3, no_beds: 6, area: 200.0, user: jane, category: 1)
+spacious_house = Property.create(name: "Spacious House", description: "A spacious house with a large backyard", no_bedrooms: 4, no_baths: 2, no_beds: 5, area: 150.0, user: john, category: 3)
 
 # Create some addresses
 cozy_apartment_address = Address.create(house_number: "123", street: "Main St", city: "New York", state: "NY", country: "USA", zip_code: "10001", property: cozy_apartment)

@@ -53,8 +53,6 @@ class Api::V1::PropertiesController < ApplicationController
       :area,
       :user_id,
       :category_id,
-      address_attributes: %i[city state street house_number country zip_code],
-      reservation_criteria_attributes: %i[time_period others_fee min_time_period max_guest rate]
     )
   end
 
