@@ -1,4 +1,6 @@
 class ReservationCriteria < ApplicationRecord
+  belongs_to :property
+
   validates :time_period, presence: true
   validates :others_fee, presence: true, numericality: { greater_than_or_equal_to: 0 }
   validates :rate, presence: true, numericality: { greater_than_or_equal_to: 0 }
