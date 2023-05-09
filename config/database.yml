@@ -24,20 +24,10 @@ default: &default
 development:
   <<: *default
   database: rent_home_now_api_development
-  username: admin
-  password: password
-  host: localhost
-  port: 5432
-  min_messages: notice
 
 test:
   <<: *default
   database: rent_home_now_api_test
-  username: admin
-  password: password
-  host: localhost
-  port: 5432
-  min_messages: notice
 
 # Instead, provide the password or a full connection URL as an environment
 # variable when you boot the app. For example:

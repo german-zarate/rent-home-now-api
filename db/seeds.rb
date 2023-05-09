@@ -89,16 +89,21 @@ end
 #   end
 # end
 
+categories = [
+  "House",
+  "Apartment",
+  "Room",
+  "Duplex",
+  "Loft",
+  "Flat",
+  "Studio",
+  "Cottage",
+  "Mansion"
+]
 
-
-
-
-
-# Create some categories
-apartment = Category.create(name: "Apartment")
-house = Category.create(name: "House")
-villa = Category.create(name: "Villa")
-condo = Category.create(name: "Condo")
+categories.each do |category|
+  Category.create!(name: category)
+end
 
 # Create some users
 john = User.create(name: "John Doe", email: "john@example.com", password: "password", role: "user", avatar: "https://randomuser.me/api/portraits/men/1.jpg")
