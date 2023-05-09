@@ -5,9 +5,11 @@ Rails.application.routes.draw do
       resources :properties, only: %i[index show create update destroy]
       resources :reservation_criterias, only: %i[index show create update destroy]
       resources :addresses, only: %i[create update destroy]
+      resources :users, only: %i[index show update destroy]
+      post 'auth/sign_in', to: 'authentication#sign_in'
+      post 'auth/sign_up', to: 'users#create'
+      get 'auth/me', to: 'authentication#current_user'
     end
   end
-
-  # Defines the root path route ("/")
-  # root "articles#index"
+  match '*unmatched_route', to: 'application#not_found', via: :all
 end
