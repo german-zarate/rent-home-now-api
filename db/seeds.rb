@@ -5,12 +5,21 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
+categories = [
+  "House",
+  "Apartment",
+  "Room",
+  "Duplex",
+  "Loft",
+  "Flat",
+  "Studio",
+  "Cottage",
+  "Mansion"
+]
 
-# Create some categories
-apartment = Category.create(name: "Apartment")
-house = Category.create(name: "House")
-villa = Category.create(name: "Villa")
-condo = Category.create(name: "Condo")
+categories.each do |category|
+  Category.create!(name: category)
+end
 
 # Create some users
 john = User.create(name: "John Doe", email: "john@example.com", password: "password", role: "user", avatar: "https://randomuser.me/api/portraits/men/1.jpg")
@@ -32,6 +41,6 @@ luxury_villa_image = Image.create(source: "https://unsplash.com/photos/3E2qD3x9s
 spacious_house_image = Image.create(source: "https://unsplash.com/photos/CwkiN6_qpDI", property: spacious_house)
 
 # Create some reservation criteria
-cozy_apartment_reservation_criteria = ReservationCriteria.create(time_period: "1 week", others_fee: 50.0, min_time_period: 3, max_guest: 4, rate: 100.0, property: cozy_apartment)
-luxury_villa_reservation_criteria = ReservationCriteria.create(time_period: "1 month", others_fee: 100.0, min_time_period: 7, max_guest: 6, rate: 200.0, property: luxury_villa)
-spacious_house_reservation_criteria = ReservationCriteria.create(time_period: "2 weeks", others_fee: 75.0, min_time_period:7, max_guest: 7, rate: 300.0, property: spacious_house)
+cozy_apartment_reservation_criteria = ReservationCriteria.create(time_period: "week", others_fee: 50.0, min_time_period: 3, max_guest: 4, rate: 100.0, property: cozy_apartment)
+luxury_villa_reservation_criteria = ReservationCriteria.create(time_period: "month", others_fee: 100.0, min_time_period: 7, max_guest: 6, rate: 200.0, property: luxury_villa)
+spacious_house_reservation_criteria = ReservationCriteria.create(time_period: "weeks", others_fee: 75.0, min_time_period:7, max_guest: 7, rate: 300.0, property: spacious_house)
