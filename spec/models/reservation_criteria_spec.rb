@@ -2,10 +2,13 @@ require 'rails_helper'
 
 RSpec.describe ReservationCriteria, type: :model do
   subject do
-    @user = User.create!(name: 'Sambeck', email: 'sambeck@gmail.com', password: 'password', password_confirmation: 'password', role: 'admin', avatar: 'https://images.unsplash.com/photo-1651684215020-f7a5b6610f23?&fit=crop&w=640')
-    @category = Category.create!(name:"House")
-    @property = Property.create!(name: "My Home", description: "My fabolous home", no_bedrooms:5, no_baths:2, no_beds:6, area:120, user_id: @user.id, category_id: @category.id)
-    ReservationCriteria.create!(time_period: "weekly", min_time_period:2, others_fee: 10.2, max_guest:5, rate:110, property_id: @property.id)
+    @user = User.create!(name: 'Sambeck', email: 'sambeck@gmail.com', password: 'password',
+                         password_confirmation: 'password', role: 'admin', avatar: 'https://images.unsplash.com/photo-1651684215020-f7a5b6610f23?&fit=crop&w=640')
+    @category = Category.create!(name: 'House')
+    @property = Property.create!(name: 'My Home', description: 'My fabolous home', no_bedrooms: 5, no_baths: 2,
+                                 no_beds: 6, area: 120, user_id: @user.id, category_id: @category.id)
+    ReservationCriteria.create!(time_period: 'weekly', min_time_period: 2, others_fee: 10.2, max_guest: 5, rate: 110,
+                                property_id: @property.id)
   end
 
   before { subject.save }
@@ -22,7 +25,7 @@ RSpec.describe ReservationCriteria, type: :model do
     end
 
     it 'displays an error message if time_period is not a word' do
-      subject.time_period = 12312
+      subject.time_period = 12_312
       expect(subject).not_to be_valid
       expect(subject.errors[:time_period]).to include('It should be a word, try with daily, weekly or monthly')
     end
@@ -38,7 +41,7 @@ RSpec.describe ReservationCriteria, type: :model do
     end
 
     it 'Should be invalid if the value is not a number' do
-      subject.others_fee = "hi"
+      subject.others_fee = 'hi'
       expect(subject).to_not be_valid
     end
 
@@ -58,7 +61,7 @@ RSpec.describe ReservationCriteria, type: :model do
     end
 
     it 'rate should be a number' do
-      subject.rate = "john"
+      subject.rate = 'john'
       expect(subject).to_not be_valid
     end
 
@@ -78,7 +81,7 @@ RSpec.describe ReservationCriteria, type: :model do
     end
 
     it 'min_time_period should be a number' do
-      subject.min_time_period = "john"
+      subject.min_time_period = 'john'
       expect(subject).to_not be_valid
     end
 
@@ -93,7 +96,7 @@ RSpec.describe ReservationCriteria, type: :model do
     end
 
     it 'Should be invalid if the max_guest value is not a number' do
-      subject.max_guest = "hi"
+      subject.max_guest = 'hi'
       expect(subject).to_not be_valid
     end
 

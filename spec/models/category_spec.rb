@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Category, type: :model do
   subject do
-    @category = Category.create!(name:"Mansion")
+    @category = Category.create!(name: 'Mansion')
   end
 
   before { subject.save }
