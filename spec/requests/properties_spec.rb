@@ -13,7 +13,7 @@ RSpec.describe 'Properties', type: :request do
       no_beds: 3,
       area: 150,
       user: @user,
-      category: @category,
+      category: @category
     )
   end
   describe 'GET /api/v1/properties' do
