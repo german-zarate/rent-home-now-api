@@ -1,5 +1,6 @@
 class Api::V1::UsersController < ApplicationController
   before_action :authenticate_user, except: :create
+  load_and_authorize_resource
   rescue_from ActiveRecord::RecordNotFound, with: :user_not_found
   before_action :set_user, only: %i[show update destroy]
 
@@ -7,20 +8,22 @@ class Api::V1::UsersController < ApplicationController
   def index
     @users = User.all
 
-    render json: @users
+    render json: @users.as_json(except: [:password_digest])
   end
 
   # GET /users/1
   def show
-    render json: @user
+    render json: @user.as_json(except: [:password_digest])
   end
 
   # POST /users
   def create
+    user_params[:role] = 'user'
+
     @user = User.new(user_params)
 
     if @user.save
-      render json: @user, status: :created
+      render json: @user.as_json(except: [:password_digest]), status: :created
     else
       render json: @user.errors, status: :unprocessable_entity
     end
@@ -29,7 +32,7 @@ class Api::V1::UsersController < ApplicationController
   # PATCH/PUT /users/1
   def update
     if @user.update(user_params)
-      render json: @user
+      render json: @user.as_json(except: [:password_digest])
     else
       render json: @user.errors, status: :unprocessable_entity
     end
@@ -55,6 +58,6 @@ class Api::V1::UsersController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def user_params
-    params.require(:user).permit(:name, :email, :role)
+    params.require(:user).permit(:name, :email, :role, :password, :password_confirmation, :avatar)
   end
 end

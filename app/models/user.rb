@@ -11,13 +11,18 @@ class User < ApplicationRecord
   validates :role, inclusion: { in: %w[user admin], message: "Role must be 'user' or 'admin'" }
 
   has_secure_password
-  validates :password, presence: { message: "Password can't be blank" }
 
-  validate :password_confirmation_matches_password
+  validates :password, presence: { message: "Password can't be blank" }, on: :create
+
+  validate :password_confirmation_matches_password, on: :create
 
   def password_confirmation_matches_password
     return unless password_confirmation != password
 
     errors.add(:password_confirmation, "Password confirmation doesn't match password")
+  end
+
+  def admin?
+    role == 'admin'
   end
 end
