@@ -52,9 +52,7 @@ class Api::V1::PropertiesController < ApplicationController
       :no_beds,
       :area,
       :user_id,
-      :category_id,
-      address_attributes: %i[city state street house_number country zip_code],
-      reservation_criteria_attributes: %i[time_period others_fee min_time_period max_guest rate]
+      :category_id
     )
   end
 
@@ -66,32 +64,3 @@ class Api::V1::PropertiesController < ApplicationController
     render json: { error: 'Record not found', status: :not_found }, status: :not_found
   end
 end
-
-# POST /api/v1/properties
-#
-# {
-#   "name": "My Property",
-#   "description": "A description of my property",
-#   "no_bedrooms": 2,
-#   "no_baths": 2,
-#   "no_beds": 3,
-#   "area": 100,
-#   "address_attributes": {
-#     "city": "New York",
-#     "state": "NY",
-#     "street": "123 Main St",
-#     "house_number": "Apt 2B",
-#     "country": "USA",
-#     "zip_code": "10001"
-#   },
-#   "category_attributes": {
-#     "name": "Apartment"
-#   },
-#   "reservation_criteria_attributes": {
-#     "time_period": "Week",
-#     "others_fee": 100,
-#     "min_time_period": 3,
-#     "max_guest": 4,
-#     "rate": 200
-#   }
-# }

@@ -3,10 +3,6 @@ require 'rails_helper'
 RSpec.describe 'Properties', type: :request do
   before do
     @category = Category.create(name: 'new category')
-    @address = Address.create(street: '123 Main St', city: 'New York', state: 'NY', zip_code: '10001',
-                              house_number: '12k32', country: 'USA')
-    @reservation_criteria = ReservationCriteria.create(time_period: 'week', min_time_period: 7, others_fee: 100,
-                                                       max_guest: 10, rate: 10)
     @user = User.create(name: 'John Doe', email: 'john@example.com', password: 'password', avatar: 'avatar.png')
 
     @property1 = Property.create(
@@ -17,9 +13,7 @@ RSpec.describe 'Properties', type: :request do
       no_beds: 3,
       area: 150,
       user: @user,
-      category: @category,
-      address: @address,
-      reservation_criteria: @reservation_criteria
+      category: @category
     )
   end
   describe 'GET /api/v1/properties' do
