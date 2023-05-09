@@ -65,7 +65,8 @@ RSpec.describe User, type: :model do
     end
 
     it 'is valid with valid attributes' do
-      user = User.create(name: 'Shahadat Hossain', email: 'shahadat3669@gmail.com', password: 'password', password_confirmation: 'password', role: 'admin',
+      user = User.create(name: 'Shahadat Hossain', email: 'shahadat3669@gmail.com', password: 'password',
+                         password_confirmation: 'password', role: 'admin',
                          avatar: 'https://images.unsplash.com/photo-1651684215020-f7a5b6610f23?&fit=crop&w=640')
       expect(user).to be_valid
     end

@@ -3,7 +3,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '3.2.0'
 
-# Use CanCanCan for authorization 
+# Use CanCanCan for authorization
 gem 'cancancan'
 
 # Use Json Web Token (JWT) for token based authentication
