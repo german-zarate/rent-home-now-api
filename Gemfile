@@ -6,6 +6,8 @@ ruby '>= 3.1.0'
 # Use CanCanCan for authorization
 gem 'cancancan'
 
+gem 'httparty'
+
 # Use Json Web Token (JWT) for token based authentication
 gem 'jwt'
 
