@@ -5,7 +5,7 @@ RSpec.describe Address, type: :model do
   let(:user) { User.create(name: 'John Doe', email: 'john@example.com', password: 'password', role: 'user', avatar: 'https://randomuser.me/api/portraits/men/1.jpg') }
   let(:property) do
     Property.create(name: 'Cozy Apartment', description: 'A cozy apartment in the heart of the city', no_bedrooms: 1,
-                    no_baths: 1, no_beds: 2, area: 50.0, user:, category:)
+                    no_baths: 1, no_beds: 2, area: 50.0, user: :user, category: :category)
   end
   let(:valid_attributes) do
     {
