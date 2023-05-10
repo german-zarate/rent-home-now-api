@@ -4,9 +4,8 @@ class Api::V1::PropertiesController < ApplicationController
   rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
 
   def index
-    @properties = Property.all
-    # render json: @properties, include: %i[user category images address reservation_criteria]
-    render json: @properties, include: :images
+    @properties = Property.joins(:reservation_criteria).distinct
+    render json: @properties, include: %i[user category address images]
   end
 
   def show
