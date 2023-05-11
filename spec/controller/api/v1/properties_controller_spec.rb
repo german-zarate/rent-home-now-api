@@ -16,19 +16,27 @@ RSpec.describe Api::V1::PropertiesController, type: :controller do
                                   no_baths: 2, no_beds: 2, area: 100.0, user: @user1, category: @category)
     @property2 = Property.create!(name: Faker::Lorem.word, description: Faker::Lorem.sentence, no_bedrooms: 3,
                                   no_baths: 2, no_beds: 3, area: 150.0, user: @user2, category: @category2)
+    @reservation_criteria = ReservationCriteria.create!(
+      time_period: Faker::Lorem.word,
+      others_fee: 100,
+      rate: 10,
+      min_time_period: 3,
+      max_guest: 10,
+      property: @property1
+    )
   end
 
   describe 'GET #index' do
     before do
       get :index
     end
-    it 'returns a list of properties' do
+    it 'returns a list of properties(that have reservation criteria)' do
       # Check that the response has a successful status code
       expect(response).to have_http_status(:ok)
 
       # Check that the response includes the created property's name
       expect(response.body).to include(@property1.name)
-      expect(response.body).to include(@property2.name)
+      expect(response.body).not_to include(@property2.name)
     end
     it 'includes the correct information for each property' do
       # Check that the response includes the correct information for each property
@@ -36,6 +44,11 @@ RSpec.describe Api::V1::PropertiesController, type: :controller do
       expect(response.body).to include(@property1.area.to_s)
       expect(response.body).to include(@user1.id.to_s)
       expect(response.body).to include(@category.id.to_s)
+    end
+    it "it doesn't include list of property if they hainformation for each property" do
+      expect(response.body).not_to include(@property2.description)
+      expect(response.body).not_to include(@property2.area.to_s)
+      expect(response.body).not_to include(@user2.id.to_s)
     end
   end
 
