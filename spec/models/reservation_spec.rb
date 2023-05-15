@@ -114,4 +114,19 @@ RSpec.describe Reservation, type: :model do
       end
     end
   end
+
+  describe 'before_save callback' do
+    it 'sets the reservation price based on property attributes' do
+      reservation = Reservation.new(
+        start_date: Date.today,
+        end_date: Date.today + 2,
+        guests: @criteria.max_guest - 1,
+        user: @user1,
+        property: @property1
+      )
+
+      reservation.save
+      expect(reservation.price).to eq(((reservation.end_date - reservation.start_date) * @criteria.rate) + @criteria.others_fee) # (100 * 3) + 10 = 310
+    end
+  end
 end
