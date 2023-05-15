@@ -126,7 +126,8 @@ RSpec.describe Reservation, type: :model do
       )
 
       reservation.save
-      expect(reservation.price).to eq(((reservation.end_date - reservation.start_date) * @criteria.rate) + @criteria.others_fee) # (100 * 3) + 10 = 310
+      expect(reservation.price).to eq
+      (((reservation.end_date - reservation.start_date) * @criteria.rate) + @criteria.others_fee)
     end
   end
 end
