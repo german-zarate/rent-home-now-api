@@ -117,8 +117,8 @@ end
 
 # Create reservations
 User.where(role: 'user').each do |user|
-  Property.all.each do |property|
-    next unless rand(0..1) == 1 
+  Property.where.not(user_id: user.id).each do |property|
+    next unless rand(0..1) == 1
 
     start_date = Faker::Date.between(from: Date.today, to: Date.today + 90)
     end_date = start_date + rand(1..7).days
@@ -132,7 +132,6 @@ User.where(role: 'user').each do |user|
     )
   end
 end
-
 
 
  puts "Seeds summary"
