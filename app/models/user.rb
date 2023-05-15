@@ -1,5 +1,6 @@
 class User < ApplicationRecord
   has_many :property
+  has_many :reservation, dependent: :destroy
 
   validates :avatar, presence: true
   validates :name, presence: { message: "Name can't be blank" },
