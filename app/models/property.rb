@@ -4,6 +4,7 @@ class Property < ApplicationRecord
   has_many :images
   has_one :address, dependent: :destroy
   has_one :reservation_criteria, dependent: :destroy
+  has_many :reservation, dependent: :destroy
 
   validates :name, presence: true, length: { maximum: 255 }
   validates :description, presence: true, length: { maximum: 1000 }
