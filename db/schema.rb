@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_05_05_193050) do
+ActiveRecord::Schema[7.0].define(version: 2023_05_15_162645) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -68,6 +68,19 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_05_193050) do
     t.index ["property_id"], name: "index_reservation_criteria_on_property_id"
   end
 
+  create_table "reservations", force: :cascade do |t|
+    t.date "start_date"
+    t.date "end_date"
+    t.integer "guests"
+    t.decimal "price", precision: 10, scale: 2
+    t.bigint "user_id", null: false
+    t.bigint "property_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["property_id"], name: "index_reservations_on_property_id"
+    t.index ["user_id"], name: "index_reservations_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "name", null: false
@@ -83,4 +96,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_05_193050) do
   add_foreign_key "properties", "categories"
   add_foreign_key "properties", "users"
   add_foreign_key "reservation_criteria", "properties", on_delete: :cascade
+  add_foreign_key "reservations", "properties"
+  add_foreign_key "reservations", "users"
 end

@@ -1,13 +1,13 @@
 require 'httparty'
 
 # remove all existing records
+Reservation.delete_all
 Address.delete_all
 ReservationCriteria.delete_all
 Image.delete_all
 Property.delete_all
 Category.delete_all
 User.delete_all
-
 
 # resets the primary key sequence
 ActiveRecord::Base.connection.reset_pk_sequence!('users')
@@ -16,6 +16,7 @@ ActiveRecord::Base.connection.reset_pk_sequence!('addresses')
 ActiveRecord::Base.connection.reset_pk_sequence!('categories')
 ActiveRecord::Base.connection.reset_pk_sequence!('reservation_criteria')
 ActiveRecord::Base.connection.reset_pk_sequence!('images')
+ActiveRecord::Base.connection.reset_pk_sequence!('reservations')
 
 images = [
   'https://http2.mlstatic.com/D_NQ_NP_984527-MLM69100018396_042023-O.webp',
@@ -114,6 +115,25 @@ User.where(role: 'user').each do |user|
   end
 end
 
+# Create reservations
+User.where(role: 'user').each do |user|
+  Property.where.not(user_id: user.id).each do |property|
+    next unless rand(0..1) == 1
+
+    start_date = Faker::Date.between(from: Date.today, to: Date.today + 90)
+    end_date = start_date + rand(1..7).days
+
+    Reservation.create(
+      start_date: start_date,
+      end_date: end_date,
+      guests: rand(1..property.reservation_criteria.max_guest),
+      user: user,
+      property: property
+    )
+  end
+end
+
+
  puts "Seeds summary"
  tp [
    { name: 'Admin', count: User.where(role: 'admin').count },
@@ -122,4 +142,5 @@ end
    { name: 'Addresses', count: Address.count },
    { name: 'Categories', count: Category.count },
    { name: 'Reservation Criteria', count: ReservationCriteria.count },
-   { name: 'Images', count: Image.count }]
+   { name: 'Images', count: Image.count },
+   { name: 'Reservation', count: Reservation.count }]
