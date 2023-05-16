@@ -5,7 +5,7 @@ class Api::V1::PropertiesController < ApplicationController
 
   def index
     @properties = Property.joins(:reservation_criteria).distinct
-    render json: @properties, include: %i[user category images]
+    render json: @properties, include: %i[address reservation_criteria category images]
   end
 
   def show

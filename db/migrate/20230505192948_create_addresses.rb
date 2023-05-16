@@ -7,7 +7,7 @@ class CreateAddresses < ActiveRecord::Migration[7.0]
       t.string :state
       t.string :country
       t.string :zip_code
-      t.references :property, null: false, foreign_key: true
+      t.references :property, null: false, foreign_key: { on_delete: :cascade }
 
       t.timestamps
     end

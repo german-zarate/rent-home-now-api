@@ -91,11 +91,11 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_15_162645) do
     t.datetime "updated_at", null: false
   end
 
-  add_foreign_key "addresses", "properties"
-  add_foreign_key "images", "properties"
-  add_foreign_key "properties", "categories"
-  add_foreign_key "properties", "users"
+  add_foreign_key "addresses", "properties", on_delete: :cascade
+  add_foreign_key "images", "properties", on_delete: :cascade
+  add_foreign_key "properties", "categories", on_delete: :cascade
+  add_foreign_key "properties", "users", on_delete: :cascade
   add_foreign_key "reservation_criteria", "properties", on_delete: :cascade
-  add_foreign_key "reservations", "properties"
-  add_foreign_key "reservations", "users"
+  add_foreign_key "reservations", "properties", on_delete: :cascade
+  add_foreign_key "reservations", "users", on_delete: :cascade
 end
