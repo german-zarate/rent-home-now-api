@@ -28,6 +28,8 @@ class Api::V1::AuthenticationController < ApplicationController
   def current_user
     @my_properties = Property.where(user_id: @current_user.id)
     @my_reservations = Reservation.where(user_id: @current_user.id)
-    render json: { success: true, data: {myReservation: @my_reservations, myProperties: @my_properties, include: %i[images]}   }, status: :ok
+    render json: { success: true, data: { myReservation: @my_reservations,
+                                          myProperties: @my_properties, include: %i[images] } },
+           status: :ok
   end
 end
