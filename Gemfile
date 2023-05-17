@@ -26,6 +26,9 @@ gem 'puma', '~> 5.0'
 # Authentica in test mode
 gem 'warden'
 
+# Find and solve n+1 problems
+gem 'bullet', '~> 7.0'
+
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 # gem "jbuilder"
 
