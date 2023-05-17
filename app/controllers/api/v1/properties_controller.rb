@@ -1,4 +1,5 @@
 class Api::V1::PropertiesController < ApplicationController
+  # before_action :authenticate_user, except: %i[index show]
   before_action :set_property, only: %i[show update destroy]
   before_action :set_default_response_format
   rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
@@ -17,6 +18,11 @@ class Api::V1::PropertiesController < ApplicationController
     @property = Property.new(property_params)
 
     if @property.save
+      if params[:images].present?
+        params[:images].each do |image_source|
+          @property.images.create(source: image_source)
+        end
+      end
       render json: @property, include: %i[user category images address reservation_criteria], status: :created
     else
       render json: @property.errors, status: :unprocessable_entity
@@ -51,7 +57,8 @@ class Api::V1::PropertiesController < ApplicationController
       :no_beds,
       :area,
       :user_id,
-      :category_id
+      :category_id,
+      images: []
     )
   end
 
