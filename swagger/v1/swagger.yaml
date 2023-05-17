@@ -55,6 +55,58 @@ paths:
       responses:
         '200':
           description: successful
+  "/api/v1/users":
+    get:
+      summary: list users
+      tags:
+      - Users
+      responses:
+        '200':
+          description: successful
+  "/api/v1/users/{id}":
+    parameters:
+    - name: id
+      in: path
+      description: id
+      required: true
+      schema:
+        type: string
+    get:
+      summary: show user
+      tags:
+      - Users
+      responses:
+        '200':
+          description: successful
+    patch:
+      summary: update user
+      tags:
+      - Users
+      responses:
+        '200':
+          description: successful
+    put:
+      summary: update user
+      tags:
+      - Users
+      responses:
+        '200':
+          description: successful
+    delete:
+      summary: delete user
+      tags:
+      - Users
+      responses:
+        '200':
+          description: successful
+  "/api/v1/auth/sign_up":
+    post:
+      summary: create user
+      tags:
+      - Users
+      responses:
+        '200':
+          description: successful
 servers:
 - url: https://{defaultHost}
   variables:
