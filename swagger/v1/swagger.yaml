@@ -4,6 +4,43 @@ info:
   title: API V1
   version: v1
 paths:
+  "/api/v1/addresses":
+    post:
+      summary: create address
+      tags:
+      - Addresses
+      responses:
+        '200':
+          description: successful
+  "/api/v1/addresses/{id}":
+    parameters:
+    - name: id
+      in: path
+      description: id
+      required: true
+      schema:
+        type: string
+    patch:
+      summary: update address
+      tags:
+      - Addresses
+      responses:
+        '200':
+          description: successful
+    put:
+      summary: update address
+      tags:
+      - Addresses
+      responses:
+        '200':
+          description: successful
+    delete:
+      summary: delete address
+      tags:
+      - Addresses
+      responses:
+        '200':
+          description: successful
   "/api/v1/properties":
     get:
       summary: list properties
