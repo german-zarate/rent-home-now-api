@@ -1,7 +1,7 @@
 class Property < ApplicationRecord
   belongs_to :user
   belongs_to :category
-  has_many :images
+  has_many :images, dependent: :destroy
   has_one :address, dependent: :destroy
   has_one :reservation_criteria, dependent: :destroy
   has_many :reservation, dependent: :destroy
