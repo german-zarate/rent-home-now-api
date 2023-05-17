@@ -3,6 +3,7 @@ require 'swagger_helper'
 RSpec.describe 'api/v1/properties', type: :request do
   path '/api/v1/properties' do
     get('list properties') do
+      tags 'Properties' 
       response(200, 'successful') do
         after do |example|
           example.metadata[:response][:content] = {
@@ -16,6 +17,7 @@ RSpec.describe 'api/v1/properties', type: :request do
     end
 
     post('create property') do
+      tags 'Properties' 
       response(200, 'successful') do
         after do |example|
           example.metadata[:response][:content] = {
@@ -34,6 +36,7 @@ RSpec.describe 'api/v1/properties', type: :request do
     parameter name: 'id', in: :path, type: :string, description: 'id'
 
     get('show property') do
+      tags 'Properties' 
       response(200, 'successful') do
         let(:id) { '123' }
 
@@ -49,6 +52,7 @@ RSpec.describe 'api/v1/properties', type: :request do
     end
 
     patch('update property') do
+      tags 'Properties' 
       response(200, 'successful') do
         let(:id) { '123' }
 
@@ -64,6 +68,7 @@ RSpec.describe 'api/v1/properties', type: :request do
     end
 
     put('update property') do
+      tags 'Properties' 
       response(200, 'successful') do
         let(:id) { '123' }
 
@@ -79,6 +84,7 @@ RSpec.describe 'api/v1/properties', type: :request do
     end
 
     delete('delete property') do
+      tags 'Properties' 
       response(200, 'successful') do
         let(:id) { '123' }
 
