@@ -15,7 +15,9 @@ class Api::V1::AuthenticationController < ApplicationController
         success: true,
         data: {
           user:,
-          accessToken: token
+          accessToken: token,
+          properties: Property.where(user_id: user.id),
+          reservations: Reservation.where(user_id: user.id)
         }
       }, status: :ok
     else
@@ -24,6 +26,10 @@ class Api::V1::AuthenticationController < ApplicationController
   end
 
   def current_user
-    render json: { success: true, data: @current_user }, status: :ok
+    @my_properties = Property.where(user_id: @current_user.id)
+    @my_reservations = Reservation.where(user_id: @current_user.id)
+    render json: { success: true, data: { myReservation: @my_reservations,
+                                          myProperties: @my_properties, include: %i[images] } },
+           status: :ok
   end
 end

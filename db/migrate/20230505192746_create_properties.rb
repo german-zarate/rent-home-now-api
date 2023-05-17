@@ -7,8 +7,8 @@ class CreateProperties < ActiveRecord::Migration[7.0]
       t.integer :no_baths
       t.integer :no_beds
       t.float :area
-      t.references :user, null: false, foreign_key: true
-      t.references :category, null: false, foreign_key: true
+      t.references :user, null: false, foreign_key: { on_delete: :cascade }
+      t.references :category, null: false, foreign_key: { on_delete: :cascade }
 
       t.timestamps
     end
