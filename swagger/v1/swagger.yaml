@@ -92,6 +92,108 @@ paths:
       responses:
         '200':
           description: successful
+  "/api/v1/reservation_criterias":
+    get:
+      summary: list reservation_criteria
+      tags:
+      - Reservation Criteria
+      responses:
+        '200':
+          description: successful
+    post:
+      summary: create reservation_criteria
+      tags:
+      - Reservation Criteria
+      responses:
+        '200':
+          description: successful
+  "/api/v1/reservation_criterias/{id}":
+    parameters:
+    - name: id
+      in: path
+      description: id
+      required: true
+      schema:
+        type: string
+    get:
+      summary: show reservation_criteria
+      tags:
+      - Reservation Criteria
+      responses:
+        '200':
+          description: successful
+    patch:
+      summary: update reservation_criteria
+      tags:
+      - Reservation Criteria
+      responses:
+        '200':
+          description: successful
+    put:
+      summary: update reservation_criteria
+      tags:
+      - Reservation Criteria
+      responses:
+        '200':
+          description: successful
+    delete:
+      summary: delete reservation_criteria
+      tags:
+      - Reservation Criteria
+      responses:
+        '200':
+          description: successful
+  "/api/v1/reservations":
+    get:
+      summary: list reservations
+      tags:
+      - Reervations
+      responses:
+        '200':
+          description: successful
+    post:
+      summary: create reservation
+      tags:
+      - Reervations
+      responses:
+        '200':
+          description: successful
+  "/api/v1/reservations/{id}":
+    parameters:
+    - name: id
+      in: path
+      description: id
+      required: true
+      schema:
+        type: string
+    get:
+      summary: show reservation
+      tags:
+      - Reervations
+      responses:
+        '200':
+          description: successful
+    patch:
+      summary: update reservation
+      tags:
+      - Reervations
+      responses:
+        '200':
+          description: successful
+    put:
+      summary: update reservation
+      tags:
+      - Reervations
+      responses:
+        '200':
+          description: successful
+    delete:
+      summary: delete reservation
+      tags:
+      - Reervations
+      responses:
+        '200':
+          description: successful
   "/api/v1/users":
     get:
       summary: list users

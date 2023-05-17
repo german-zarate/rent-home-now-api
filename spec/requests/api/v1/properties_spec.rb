@@ -3,7 +3,7 @@ require 'swagger_helper'
 RSpec.describe 'api/v1/properties', type: :request do
   path '/api/v1/properties' do
     get('list properties') do
-      tags 'Properties' 
+      tags 'Properties'
       response(200, 'successful') do
         after do |example|
           example.metadata[:response][:content] = {
@@ -17,7 +17,7 @@ RSpec.describe 'api/v1/properties', type: :request do
     end
 
     post('create property') do
-      tags 'Properties' 
+      tags 'Properties'
       response(200, 'successful') do
         after do |example|
           example.metadata[:response][:content] = {
@@ -36,7 +36,7 @@ RSpec.describe 'api/v1/properties', type: :request do
     parameter name: 'id', in: :path, type: :string, description: 'id'
 
     get('show property') do
-      tags 'Properties' 
+      tags 'Properties'
       response(200, 'successful') do
         let(:id) { '123' }
 
@@ -50,9 +50,11 @@ RSpec.describe 'api/v1/properties', type: :request do
         run_test!
       end
     end
+  end
 
+  path '/api/v1/properties/{id}' do
     patch('update property') do
-      tags 'Properties' 
+      tags 'Properties'
       response(200, 'successful') do
         let(:id) { '123' }
 
@@ -66,9 +68,10 @@ RSpec.describe 'api/v1/properties', type: :request do
         run_test!
       end
     end
-
+  end
+  path '/api/v1/properties/{id}' do
     put('update property') do
-      tags 'Properties' 
+      tags 'Properties'
       response(200, 'successful') do
         let(:id) { '123' }
 
@@ -82,9 +85,11 @@ RSpec.describe 'api/v1/properties', type: :request do
         run_test!
       end
     end
+  end
 
+  path '/api/v1/properties/{id}' do
     delete('delete property') do
-      tags 'Properties' 
+      tags 'Properties'
       response(200, 'successful') do
         let(:id) { '123' }
 

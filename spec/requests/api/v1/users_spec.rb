@@ -36,7 +36,9 @@ RSpec.describe 'api/v1/users', type: :request do
         run_test!
       end
     end
+  end
 
+  path '/api/v1/users/{id}' do
     patch('update user') do
       tags 'Users'
       response(200, 'successful') do
@@ -52,7 +54,9 @@ RSpec.describe 'api/v1/users', type: :request do
         run_test!
       end
     end
+  end
 
+  path '/api/v1/users/{id}' do
     put('update user') do
       tags 'Users'
       response(200, 'successful') do
@@ -68,7 +72,9 @@ RSpec.describe 'api/v1/users', type: :request do
         run_test!
       end
     end
+  end
 
+  path '/api/v1/users/{id}' do
     delete('delete user') do
       tags 'Users'
       response(200, 'successful') do

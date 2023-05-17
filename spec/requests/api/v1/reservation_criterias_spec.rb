@@ -1,13 +1,10 @@
 require 'swagger_helper'
 
 RSpec.describe 'api/v1/reservation_criterias', type: :request do
-
   path '/api/v1/reservation_criterias' do
-
     get('list reservation_criteria') do
       tags 'Reservation Criteria'
       response(200, 'successful') do
-
         after do |example|
           example.metadata[:response][:content] = {
             'application/json' => {
@@ -22,7 +19,6 @@ RSpec.describe 'api/v1/reservation_criterias', type: :request do
     post('create reservation_criteria') do
       tags 'Reservation Criteria'
       response(200, 'successful') do
-
         after do |example|
           example.metadata[:response][:content] = {
             'application/json' => {
@@ -54,7 +50,9 @@ RSpec.describe 'api/v1/reservation_criterias', type: :request do
         run_test!
       end
     end
+  end
 
+  path '/api/v1/reservation_criterias/{id}' do
     patch('update reservation_criteria') do
       tags 'Reservation Criteria'
       response(200, 'successful') do
@@ -70,7 +68,9 @@ RSpec.describe 'api/v1/reservation_criterias', type: :request do
         run_test!
       end
     end
+  end
 
+  path '/api/v1/reservation_criterias/{id}' do
     put('update reservation_criteria') do
       tags 'Reservation Criteria'
       response(200, 'successful') do
@@ -86,7 +86,9 @@ RSpec.describe 'api/v1/reservation_criterias', type: :request do
         run_test!
       end
     end
+  end
 
+  path '/api/v1/reservation_criterias/{id}' do
     delete('delete reservation_criteria') do
       tags 'Reservation Criteria'
       response(200, 'successful') do
