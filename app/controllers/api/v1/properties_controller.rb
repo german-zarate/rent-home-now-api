@@ -1,5 +1,5 @@
 class Api::V1::PropertiesController < ApplicationController
-  # before_action :authenticate_user, except: %i[index show]
+  before_action :authenticate_user, except: %i[index show]
   before_action :set_property, only: %i[show update destroy]
   before_action :set_default_response_format
   rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
@@ -15,8 +15,7 @@ class Api::V1::PropertiesController < ApplicationController
   end
 
   def create
-    @property = Property.new(property_params)
-
+    @property = @current_user.property.new(property_params)
     if @property.save
       if params[:images].present?
         params[:images].each do |image_source|
@@ -56,7 +55,6 @@ class Api::V1::PropertiesController < ApplicationController
       :no_baths,
       :no_beds,
       :area,
-      :user_id,
       :category_id,
       images: []
     )
