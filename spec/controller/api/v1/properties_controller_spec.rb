@@ -76,6 +76,9 @@ RSpec.describe Api::V1::PropertiesController, type: :controller do
     end
   end
   describe 'POST #create' do
+    before do
+      sign_in(@user1)
+    end
     context 'with valid parameters' do
       it 'creates a new property and returns the property in JSON format' do
         post :create, params: {
@@ -113,7 +116,6 @@ RSpec.describe Api::V1::PropertiesController, type: :controller do
             no_baths: 0,
             no_beds: 0,
             area: 0.0,
-            user_id: '',
             category_id: ''
           }
         }
@@ -126,13 +128,15 @@ RSpec.describe Api::V1::PropertiesController, type: :controller do
                                                   'no_baths' => ['must be greater than or equal to 1'],
                                                   'no_beds' => ['must be greater than or equal to 1'],
                                                   'area' => ['must be greater than or equal to 1'],
-                                                  'user' => ['must exist'],
                                                   'category' => ['must exist']
                                                 })
       end
     end
   end
   describe 'PUT #update' do
+    before do
+      sign_in(@user1)
+    end
     context 'with valid parameters' do
       it 'updates the property and returns the updated property in JSON format' do
         put :update, params: { id: @property1.id, property: { name: 'Updated Name' } }
@@ -151,7 +155,6 @@ RSpec.describe Api::V1::PropertiesController, type: :controller do
           no_baths: 0,
           no_beds: 0,
           area: 0.0,
-          user_id: '',
           category_id: ''
         } }
 
@@ -164,13 +167,15 @@ RSpec.describe Api::V1::PropertiesController, type: :controller do
                                                   'no_baths' => ['must be greater than or equal to 1'],
                                                   'no_beds' => ['must be greater than or equal to 1'],
                                                   'area' => ['must be greater than or equal to 1'],
-                                                  'user' => ['must exist'],
                                                   'category' => ['must exist']
                                                 })
       end
     end
   end
   describe 'DELETE #destroy' do
+    before do
+      sign_in(@user1)
+    end
     context 'when the property exists' do
       it 'deletes the property and returns a success response' do
         expect do

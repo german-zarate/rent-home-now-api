@@ -78,7 +78,6 @@ RSpec.describe Api::V1::ReservationsController, type: :controller do
         expect(response).to have_http_status(:unprocessable_entity)
 
         errors = JSON.parse(response.body)
-        puts errors
         expect(errors.keys).to contain_exactly('property', 'end_date')
       end
     end
