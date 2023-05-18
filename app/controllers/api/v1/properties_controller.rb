@@ -11,7 +11,7 @@ class Api::V1::PropertiesController < ApplicationController
 
   def show
     @property = Property.find(params[:id])
-    render json: @property, include: %i[user category images address reservation_criteria]
+    render json: @property, include: %i[user category images address reservation_criteria reservation]
   end
 
   def create

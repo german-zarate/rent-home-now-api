@@ -1,0 +1,345 @@
+---
+openapi: 3.0.1
+info:
+  title: API V1
+  version: v1
+paths:
+  "/api/v1/addresses":
+    post:
+      summary: create address
+      tags:
+      - Addresses
+      responses:
+        '200':
+          description: successful
+  "/api/v1/addresses/{id}":
+    parameters:
+    - name: id
+      in: path
+      description: id
+      required: true
+      schema:
+        type: string
+    patch:
+      summary: update address
+      tags:
+      - Addresses
+      responses:
+        '200':
+          description: successful
+    put:
+      summary: update address
+      tags:
+      - Addresses
+      responses:
+        '200':
+          description: successful
+    delete:
+      summary: delete address
+      tags:
+      - Addresses
+      responses:
+        '200':
+          description: successful
+  "/api/v1/auth/sign_in":
+    post:
+      summary: sign_in authentication
+      tags:
+      - Users
+      responses:
+        '200':
+          description: successful
+  "/api/v1/auth/me":
+    get:
+      summary: current_user authentication
+      tags:
+      - Users
+      responses:
+        '200':
+          description: successful
+  "/api/v1/properties":
+    get:
+      summary: list properties
+      tags:
+      - Properties
+      responses:
+        '200':
+          description: successful
+    post:
+      summary: create property
+      tags:
+      - Properties
+      responses:
+        '200':
+          description: successful
+  "/api/v1/properties/{id}":
+    parameters:
+    - name: id
+      in: path
+      description: id
+      required: true
+      schema:
+        type: string
+    get:
+      summary: show property
+      tags:
+      - Properties
+      responses:
+        '200':
+          description: successful
+    patch:
+      summary: update property
+      tags:
+      - Properties
+      responses:
+        '200':
+          description: successful
+    put:
+      summary: update property
+      tags:
+      - Properties
+      responses:
+        '200':
+          description: successful
+    delete:
+      summary: delete property
+      tags:
+      - Properties
+      responses:
+        '200':
+          description: successful
+  "/api/v1/reservation_criterias":
+    get:
+      summary: list reservation_criteria
+      tags:
+      - Reservation Criteria
+      responses:
+        '200':
+          description: successful
+    post:
+      summary: create reservation_criteria
+      tags:
+      - Reservation Criteria
+      responses:
+        '200':
+          description: successful
+  "/api/v1/reservation_criterias/{id}":
+    parameters:
+    - name: id
+      in: path
+      description: id
+      required: true
+      schema:
+        type: string
+    get:
+      summary: show reservation_criteria
+      tags:
+      - Reservation Criteria
+      responses:
+        '200':
+          description: successful
+    patch:
+      summary: update reservation_criteria
+      tags:
+      - Reservation Criteria
+      responses:
+        '200':
+          description: successful
+    put:
+      summary: update reservation_criteria
+      tags:
+      - Reservation Criteria
+      responses:
+        '200':
+          description: successful
+    delete:
+      summary: delete reservation_criteria
+      tags:
+      - Reservation Criteria
+      responses:
+        '200':
+          description: successful
+  "/api/v1/reservations":
+    get:
+      summary: list reservations
+      tags:
+      - Reervations
+      responses:
+        '200':
+          description: successful
+    post:
+      summary: create reservation
+      tags:
+      - Reervations
+      responses:
+        '200':
+          description: successful
+  "/api/v1/reservations/{id}":
+    parameters:
+    - name: id
+      in: path
+      description: id
+      required: true
+      schema:
+        type: string
+    get:
+      summary: show reservation
+      tags:
+      - Reervations
+      responses:
+        '200':
+          description: successful
+    patch:
+      summary: update reservation
+      tags:
+      - Reervations
+      responses:
+        '200':
+          description: successful
+    put:
+      summary: update reservation
+      tags:
+      - Reervations
+      responses:
+        '200':
+          description: successful
+    delete:
+      summary: delete reservation
+      tags:
+      - Reervations
+      responses:
+        '200':
+          description: successful
+  "/api/v1/auth/sign_up":
+    post:
+      summary: create user
+      tags:
+      - Users
+      parameters: []
+      responses:
+        '201':
+          description: successful
+          content:
+            application/json:
+              examples:
+                example_0:
+                  value:
+                    id: 1461
+                    email: gerri@donnelly.test
+                    name: Madison Pagac DC
+                    role: user
+                    avatar: https://loremflickr.com/300/300
+                    created_at: 2023-05-18 16:14:38 UTC
+                    updated_at: 2023-05-18 16:14:38 UTC
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                    example: 1455
+                  email:
+                    type: string
+                    example: John Doe
+                  name:
+                    type: string
+                    example: johndoe@example.com
+                  role:
+                    type: string
+                    example: user
+                  avatar:
+                    type: string
+                    format: uri
+                    example: avatar.png
+                  created_at:
+                    type: string
+                    format: date-time
+                    example: 2023-05-18 15:58:21 UTC
+                  updated_at:
+                    type: string
+                    format: date-time
+                    example: 2023-05-18 15:58:21 UTC
+                required:
+                - id
+                - email
+                - name
+                - role
+                - avatar
+                - created_at
+                - updated_at
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                user:
+                  type: object
+                  properties:
+                    name:
+                      type: string
+                      example: John Doe
+                    email:
+                      type: string
+                      example: johndoe@example.com
+                    avatar:
+                      type: string
+                      example: avatar.png
+                    password:
+                      type: string
+                      example: password
+                    password_confirmation:
+                      type: string
+                      example: password
+                  required:
+                  - name
+                  - email
+                  - avatar
+                  - password
+                  - password_confirmation
+  "/api/v1/users":
+    get:
+      summary: list users
+      tags:
+      - Users
+      responses:
+        '200':
+          description: successful
+  "/api/v1/users/{id}":
+    parameters:
+    - name: id
+      in: path
+      description: id
+      required: true
+      schema:
+        type: string
+    get:
+      summary: show user
+      tags:
+      - Users
+      responses:
+        '200':
+          description: successful
+    patch:
+      summary: update user
+      tags:
+      - Users
+      responses:
+        '200':
+          description: successful
+    put:
+      summary: update user
+      tags:
+      - Users
+      responses:
+        '200':
+          description: successful
+    delete:
+      summary: delete user
+      tags:
+      - Users
+      responses:
+        '200':
+          description: successful
+servers:
+- url: http://localhost:4000
+  description: Local server

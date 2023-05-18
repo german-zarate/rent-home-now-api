@@ -3,6 +3,8 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '>= 3.1.0'
 
+gem 'rswag'
+
 # Use CanCanCan for authorization
 gem 'cancancan'
 
@@ -59,6 +61,7 @@ group :development, :test do
   gem 'faker'
   gem 'rails-controller-testing'
   gem 'rspec-rails', '~> 6.0.0'
+  gem 'rswag-specs'
   gem 'rubocop', '>= 1.0', '< 2.0'
   gem 'table_print'
 end
