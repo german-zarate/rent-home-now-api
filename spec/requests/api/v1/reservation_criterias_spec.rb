@@ -3,6 +3,8 @@ require 'swagger_helper'
 RSpec.describe 'api/v1/reservation_criterias', type: :request do
   path '/api/v1/reservation_criterias' do
     get('list reservation_criteria') do
+      consumes 'application/json'
+      produces 'application/json'
       tags 'Reservation Criteria'
       response(200, 'successful') do
         after do |example|
@@ -17,6 +19,8 @@ RSpec.describe 'api/v1/reservation_criterias', type: :request do
     end
 
     post('create reservation_criteria') do
+      consumes 'application/json'
+      produces 'application/json'
       tags 'Reservation Criteria'
       response(200, 'successful') do
         after do |example|
@@ -36,6 +40,8 @@ RSpec.describe 'api/v1/reservation_criterias', type: :request do
     parameter name: 'id', in: :path, type: :string, description: 'id'
 
     get('show reservation_criteria') do
+      consumes 'application/json'
+      produces 'application/json'
       tags 'Reservation Criteria'
       response(200, 'successful') do
         let(:id) { '123' }
@@ -54,6 +60,8 @@ RSpec.describe 'api/v1/reservation_criterias', type: :request do
 
   path '/api/v1/reservation_criterias/{id}' do
     patch('update reservation_criteria') do
+      consumes 'application/json'
+      produces 'application/json'
       tags 'Reservation Criteria'
       response(200, 'successful') do
         let(:id) { '123' }
@@ -72,6 +80,8 @@ RSpec.describe 'api/v1/reservation_criterias', type: :request do
 
   path '/api/v1/reservation_criterias/{id}' do
     put('update reservation_criteria') do
+      consumes 'application/json'
+      produces 'application/json'
       tags 'Reservation Criteria'
       response(200, 'successful') do
         let(:id) { '123' }
@@ -90,6 +100,8 @@ RSpec.describe 'api/v1/reservation_criterias', type: :request do
 
   path '/api/v1/reservation_criterias/{id}' do
     delete('delete reservation_criteria') do
+      consumes 'application/json'
+      produces 'application/json'
       tags 'Reservation Criteria'
       response(200, 'successful') do
         let(:id) { '123' }

@@ -3,6 +3,8 @@ require 'swagger_helper'
 RSpec.describe 'api/v1/properties', type: :request do
   path '/api/v1/properties' do
     get('list properties') do
+      consumes 'application/json'
+      produces 'application/json'
       tags 'Properties'
       response(200, 'successful') do
         after do |example|
@@ -17,6 +19,8 @@ RSpec.describe 'api/v1/properties', type: :request do
     end
 
     post('create property') do
+      consumes 'application/json'
+      produces 'application/json'
       tags 'Properties'
       response(200, 'successful') do
         after do |example|
@@ -36,6 +40,8 @@ RSpec.describe 'api/v1/properties', type: :request do
     parameter name: 'id', in: :path, type: :string, description: 'id'
 
     get('show property') do
+      consumes 'application/json'
+      produces 'application/json'
       tags 'Properties'
       response(200, 'successful') do
         let(:id) { '123' }
@@ -54,6 +60,8 @@ RSpec.describe 'api/v1/properties', type: :request do
 
   path '/api/v1/properties/{id}' do
     patch('update property') do
+      consumes 'application/json'
+      produces 'application/json'
       tags 'Properties'
       response(200, 'successful') do
         let(:id) { '123' }
@@ -71,6 +79,8 @@ RSpec.describe 'api/v1/properties', type: :request do
   end
   path '/api/v1/properties/{id}' do
     put('update property') do
+      consumes 'application/json'
+      produces 'application/json'
       tags 'Properties'
       response(200, 'successful') do
         let(:id) { '123' }
@@ -89,6 +99,8 @@ RSpec.describe 'api/v1/properties', type: :request do
 
   path '/api/v1/properties/{id}' do
     delete('delete property') do
+      consumes 'application/json'
+      produces 'application/json'
       tags 'Properties'
       response(200, 'successful') do
         let(:id) { '123' }
