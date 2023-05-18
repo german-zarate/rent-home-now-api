@@ -13,6 +13,7 @@
     - [Tech Stack](#tech-stack)
     - [Key Features](#key-features)
   - [🚀 Live Demo](#live-demo)
+  - [🧮 Kanban Board](#kanban-bord)
 - [💻 Getting Started](#getting-started)
   - [Setup](#setup)
   - [Prerequisites](#prerequisites)
@@ -83,6 +84,14 @@ Main functionalities which the app will have:
 ## 🚀 Live Demo <a name="live-demo"></a>
 
 Sorry, Currently no active link available.
+
+<!-- - [Live Demo Link]() -->
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+## 🧮 Kanban Board <a name="kanban-bord"></a>
+
+![Rent-Home-Now](https://user-images.githubusercontent.com/55840999/236042261-3f31ae1b-e926-482f-b679-621648fe009a.png)
 
 <!-- - [Live Demo Link]() -->
 
