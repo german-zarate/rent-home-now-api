@@ -91,7 +91,8 @@ Sorry, Currently no active link available.
 
 ## 🧮 Kanban Board <a name="kanban-bord"></a>
 
-![Rent-Home-Now](https://user-images.githubusercontent.com/55840999/236042261-3f31ae1b-e926-482f-b679-621648fe009a.png)
+- [Kanban Board link.](https://github.com/users/shahadat3669/projects/9)
+- [Kanban Board initial state.](https://user-images.githubusercontent.com/55840999/236042261-3f31ae1b-e926-482f-b679-621648fe009a.png)
 
 <!-- - [Live Demo Link]() -->
 
