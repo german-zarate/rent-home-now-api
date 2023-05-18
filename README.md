@@ -93,6 +93,7 @@ Sorry, Currently no active link available.
 
 - [Kanban Board link.](https://github.com/users/shahadat3669/projects/9)
 - [Kanban Board initial state.](https://user-images.githubusercontent.com/55840999/236042261-3f31ae1b-e926-482f-b679-621648fe009a.png)
+- Number of team members at start and finish: 3 Team members.
 
 <!-- - [Live Demo Link]() -->
 
