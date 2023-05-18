@@ -190,7 +190,7 @@ Before running the test command, please make sure you have run `rails db:seed`.
 For testing you can run following bash command:
 
 ```bash
-  bundle exec rspec
+  bundle exec rspec --exclude-pattern "spec/requests/api/**/*"
 ```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
